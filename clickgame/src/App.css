@@ -2,10 +2,7 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
+
 
 .App-header {
   background-color: #282c34;
@@ -21,7 +18,25 @@
 .App-link {
   color: #61dafb;
 }
-
+.pokediv{
+  
+  
+}
+.pokemonPic{
+  height: 100px;
+  width: 100px;
+  padding: 10px;
+}
+.row{
+  margin-left: 18%;
+  width: 775px;
+  height: 65vh;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  border: double black 3px;
+  
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

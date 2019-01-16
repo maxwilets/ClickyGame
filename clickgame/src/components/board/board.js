@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import CharDiv from "./CharDiv"
-import Character from "./character";
+import Score from "./Score"
 
 const shuffleArray = arr=>(
     arr.map(a=>[Math.random(), a])
@@ -101,52 +101,52 @@ const pokemen= [
     }
 ]
 
-export dafault class Board extends Component {
+export default class Board extends Component {
 
     constructor(props){
         super(props)
 
-        this.state={
+        this.state ={
             user: {
                 score: 0
             },
-            pokemon: shuffleArray(pokemen)
+            characters: shuffleArray(pokemen)
         }
     }
 
-    onCharacterClick = index =>{
-        //if that tile hasn't been clicked before it will re shuffle and 
-        //add a point to the state of score
-        if(!this.state.pokemon[index].clicked){
+    onCharacterClick = index=> {
+        if(!this.state.characters[index].clicked){
             this.setState({
-                pokemon: shuffleArray(this.state.pokemon.map((character, current)=>{
-                    return (current === index)?{...character, clicked: true}: character
+                characters: shuffleArray(this.state.characters.map((character,current)=>{
+                    return (current===index) ? {...character,clicked:true}: character
                 })),
                 user: {
-                    ...this.state.user, 
-                    score: this.state.user.score + 1
+                    ...this.state.user,
+                    score: this.state.user.score +1
+                }
+            })
+        } else {
+            alert("You Already Guessed " + this.state.characters[index].name + " Try Again!")
+            this.setState({
+                
+                characters: shuffleArray(this.state.characters.map(character=>{return {...character,clicked: false}})),
+                user: {
+                    ...this.state.user,
+                    score: 0
                 }
             })
         }
-          else {
-              this.setState({
-                  pokemon: shuffleArray(this.state.pokemon.map(character=> {return{...character, clicked: false}})),
-                  user: {
-                      ...this.state.user,
-                      score: 0
-                  }
-              })
-          }
     }
-
     render(){
         return(
             <div className="Board">
-              <ScoreDisplay score={this.state.user.score}/>
-              <CharDiv
-                characters= {this.state.pokemon}
-                onCharacterClick={this.onCharacterClick}
-                />
+               <Score
+                 score={this.state.user.score}/>
+                
+              <CharDiv 
+                 characters={this.state.characters}
+                 onCharacterClick={this.onCharacterClick}
+                 />
             </div>
         )
     }
