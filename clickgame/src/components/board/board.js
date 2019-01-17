@@ -110,7 +110,10 @@ export default class Board extends Component {
             user: {
                 score: 0
             },
-            characters: shuffleArray(pokemen)
+            characters: shuffleArray(pokemen),
+            pokemon1:{
+                guess: ""
+            }
         }
     }
 
@@ -123,8 +126,27 @@ export default class Board extends Component {
                 user: {
                     ...this.state.user,
                     score: this.state.user.score +1
+                },
+                pokemon1:{
+                    ...this.state.pokemon1,
+                    guess: this.state.characters[index].name
                 }
+              
+                
             })
+            if(this.state.user.score === 17){
+                alert("Congratulations you Have a Great Memory! Press OK to Play Again")
+                this.setState({
+                    characters: shuffleArray(this.state.characters.map(character=>{return{...character, clicked:false}})),
+                    user:{
+                        ...this.state.user,
+                        score: 0
+                    },
+                    pokemon1:{
+                        guess: ""
+                    }
+                })
+            }
         } else {
             alert("You Already Guessed " + this.state.characters[index].name + " Try Again!")
             this.setState({
@@ -141,6 +163,7 @@ export default class Board extends Component {
         return(
             <div className="Board">
                <Score
+                 guess={this.state.pokemon1.guess}
                  score={this.state.user.score}/>
                 
               <CharDiv 

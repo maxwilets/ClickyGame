@@ -14,28 +14,52 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.h1{
+  position:absolute;
 }
+
+
 .pokediv{
   
   
+}
+.pokeball{
+  position:absolute;
+  left: 275px;
+  top: 15px;
+  height: 50px;
+  width: 50px;
 }
 .pokemonPic{
   height: 100px;
   width: 100px;
   padding: 10px;
 }
+.pokemonPic:hover{
+  transition: transform .5s ease-in-out;
+  transform: scale(1.05)
+}
 .row{
   margin-left: 18%;
   width: 775px;
-  height: 65vh;
+  height: 70vh;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   border: double black 3px;
   
+}
+.row1{
+  height: 30px;
+  length: 750px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  text-align: center;
+  padding-bottom: 15px
+}
+.score{
+  margin-bottom: 10px;
 }
 @keyframes App-logo-spin {
   from {
