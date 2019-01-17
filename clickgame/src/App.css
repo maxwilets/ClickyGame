@@ -14,8 +14,15 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.Board{
+  margin-top:-5px
+}
 .h1{
   position:absolute;
+}
+.nav{
+  background-color: #fc0a16;
+  padding-bottom:2px;
 }
 
 
